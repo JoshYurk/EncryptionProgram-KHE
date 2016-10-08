@@ -15,3 +15,21 @@ string convertToBinary(string input) {
 	}
 	return binaryString;
 }
+
+string convertFromBinary(string binaryNum) {
+	long bin, dec = 0, rem, num, base = 1;
+	//Converts the binaryString to an Integer
+	num = std::stoi(binaryNum);
+
+	bin = num;
+
+	while (num > 0) {
+		rem = num % 10;
+		dec = dec + rem * base;
+		base *= 2;
+		num /= 10;
+	}
+	string decimal = std::to_string(dec);
+	
+	return decimal;
+}

@@ -17,22 +17,30 @@ int main() {
 	//Menu
 		/*1) Encrypt
 		* 2) Decrypt*/
-	cout << "Input a string to convert to binary: ";
-	std::getline(std::cin,userMenuInput);
-	cout << endl;
+	cout << "Please select something to do (1-4): " << endl;
+	cout << "1) Encrypt a single sentence" << endl;
+	cout << "2) Encrypt a file" << endl;
+	cout << "3) Decrypt" << endl;
+	cout << "4) Exit" << endl;
+	std::cin >> userMenuInput;
 
-	cout << "Your string in binary is: " << endl;
-	binaryFile << convertToBinary(userMenuInput);
-	
+	if (userMenuInput == "1") {
+		//User Input for single string
+		cout << "Please enter a string to encrypt (Max 256 characters): ";
+		std::getline(std::cin, userInput);
+		//User input for encryption key.
+		cout << "Please create an encryption key (Max 12 characters of anything): " ;
+		std::getline(std::cin, userKeyInput);
 
-	//Encryption
-		//Enter String to Encrypt (Max 256 characters)
-		//Encrypt String
-		//Show Encrypted String
-	
-	//Key
-		//Enter & Set 12 character string of Alpha-Numeric-Special
-		//Key Conversion Logic
+
+
+	}
+	else if (userMenuInput == "2") {
+		cout << "Please enter a file name or path: ";
+		std::getline(std::cin, userInput);
+		cout << "Please create an encryption key (Max 12 characters of anything): ";
+		std::getline(std::cin, userKeyInput);
+	}
 
 	//Decryption
 		//Enter Key

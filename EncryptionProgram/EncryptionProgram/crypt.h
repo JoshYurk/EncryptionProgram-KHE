@@ -15,8 +15,8 @@ using std::string;
 string encrypt(string);
 string decrypt(string);
 string convertToBinary(string);
-int convertToASCII(int);
-int keyConversion(string);
+string convertFromBinary(string);
+int keyLogic(string);
 
 #endif 
 
