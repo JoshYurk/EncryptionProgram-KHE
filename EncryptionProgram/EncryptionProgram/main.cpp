@@ -5,22 +5,23 @@
 #include "crypt.h"
 #include <fstream>
 
-
 int main() {
 	std::ofstream encryptedFile;
 	std::ifstream encryptionFile;
+	std::ofstream encryptionKey;
+
 	string userMenuInput;
 	string userInput;
 	string decryptedString;
 	string userKeyInput;
 
-
+	
 	//Menu
 		/*1) Encrypt
 		* 2) Decrypt*/
 	cout << "Please select something to do (1-4): " << endl;
 	cout << "1) Encrypt a single sentence" << endl;
-	cout << "2) Encrypt a file" << endl;
+	cout << "2) Encrypt a file (WIP)" << endl;
 	cout << "3) Decrypt" << endl;
 	cout << "4) Exit" << endl;
 	cout << "Enter a choice: ";
@@ -29,15 +30,31 @@ int main() {
 
 	if (userMenuInput == "1") {
 		encryptedFile.open("encryptedString.txt");
+		encryptionKey.open("encryptionKey.txt");
 		//User Input for single string
 		cout << "Please enter a string to encrypt (Max 256 characters): ";
 		std::getline(std::cin, userInput);
 		//User input for encryption key.
 		cout << "Please create an encryption key (Max 12 characters of anything): ";
 		std::getline(std::cin, userKeyInput);
+		while (userKeyInput.length() > 12) {
+			cout << "Error: Key too long, Please re-enter a key: ";
+			std::getline(std::cin, userKeyInput);
+		}
+
+		encryptionKey << userKeyInput;
 
 		int encryptionKey = keyLogic(userKeyInput);
 		encryptedFile << encrypt(userInput, encryptionKey);
+
+		int i = 0;
+		string load;
+		while (i < 100) {
+			load += ".";
+
+			cout << load;
+			++i;
+		}
 
 
 	}
