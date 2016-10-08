@@ -42,6 +42,7 @@ std::vector<int> convertFromBinary(string binaryNum) {
 
 string printString(std::vector<int> decNums) {
 	string decryptedString = "";
+	//Prints the Letters
 	for (size_t i = 0; i < decNums.size(); ++i) {
 		decryptedString += decNums[i];
 	}
@@ -50,9 +51,11 @@ string printString(std::vector<int> decNums) {
 
 int keyLogic(string key) {
 	int keyNum = 0;
+	//Adds the ascii values of the key together
 	for (size_t i = 0; i < key.length(); ++i) {
 		keyNum = keyNum + key[i];
 	}
+
 	keyNum *= 2;
 
 	return keyNum;

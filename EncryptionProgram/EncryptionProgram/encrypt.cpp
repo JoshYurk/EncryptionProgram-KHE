@@ -9,8 +9,6 @@ string encrypt(string unencrypted, int key) {
 
 	binaryString = convertToBinary(unencrypted);
 
-	
-
 	encryptedString = invertBinary(binaryString) + convertToBinary(std::to_string(key));
 
 	return encryptedString;
