@@ -9,7 +9,6 @@ int main() {
 	std::ofstream binaryFile;
 	string userMenuInput;
 	string userInput;
-	string encryptedString;
 	string decryptedString;
 	string userKeyInput;
 
@@ -22,28 +21,35 @@ int main() {
 	cout << "2) Encrypt a file" << endl;
 	cout << "3) Decrypt" << endl;
 	cout << "4) Exit" << endl;
+	cout << "Enter a choice: ";
 	std::cin >> userMenuInput;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	if (userMenuInput == "1") {
 		//User Input for single string
 		cout << "Please enter a string to encrypt (Max 256 characters): ";
 		std::getline(std::cin, userInput);
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		//User input for encryption key.
 		cout << "Please create an encryption key (Max 12 characters of anything): " ;
 		std::getline(std::cin, userKeyInput);
-
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 
 	}
-	else if (userMenuInput == "2") {
+	if (userMenuInput == "2") {
 		cout << "Please enter a file name or path: ";
 		std::getline(std::cin, userInput);
 		cout << "Please create an encryption key (Max 12 characters of anything): ";
 		std::getline(std::cin, userKeyInput);
 	}
-
-	//Decryption
-		//Enter Key
-		//Decrypt String
-		//Show Decrypted String
+	if (userMenuInput == "3") {
+		//Decryption
+			//Enter Key
+			//Decrypt String
+			//Show Decrypted String
+	}
+	if (userMenuInput == "4") {
+		exit(0);
+	}
 }

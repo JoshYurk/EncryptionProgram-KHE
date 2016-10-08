@@ -4,6 +4,7 @@
 //Includes
 #include <string>
 #include <iostream>
+#include <vector>
 
 //Usings
 using std::cout;
@@ -12,10 +13,11 @@ using std::string;
 
 
 //Functions
-string encrypt(string);
+string encrypt(string, int);
 string decrypt(string);
 string convertToBinary(string);
-string convertFromBinary(string);
+string printString(std::vector<int>);
+std::vector<int> convertFromBinary(string);
 int keyLogic(string);
 
 #endif 

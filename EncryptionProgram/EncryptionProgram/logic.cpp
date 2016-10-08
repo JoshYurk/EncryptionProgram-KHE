@@ -6,30 +6,52 @@
 
 using std::bitset;
 
-string binaryString = "";
+
 string convertToBinary(string input) {
+	string binaryString = "";
 	//Converts the entire string to binary and stores it.
-	for (int i = 0; i < input.length(); ++i) {
+	for (size_t i = 0; i < input.length(); ++i) {
 		bitset<8> bitset1(input[i]);
 		binaryString = binaryString + bitset1.to_string();
 	}
 	return binaryString;
 }
 
-string convertFromBinary(string binaryNum) {
-	long bin, dec = 0, rem, num, base = 1;
-	//Converts the binaryString to an Integer
-	num = std::stoi(binaryNum);
-
-	bin = num;
-
-	while (num > 0) {
-		rem = num % 10;
-		dec = dec + rem * base;
-		base *= 2;
-		num /= 10;
+std::vector<int> convertFromBinary(string binaryNum) {
+	int dec = 0, rem, base = 1;
+	int num;
+	std::vector<string> binaryNumbers;
+	std::vector<int> decimalNumbers;
+	string binary = "";
+	//Splits up the binary number into 8 bit sections.
+	for (size_t i = 0; i < binaryNum.length(); i+=8) {
+		for (int j = 0; j < 8; ++j) {
+			binary += binaryNum[j + i];
+		}
+		binaryNumbers.push_back(binary);
+		binary = "";
 	}
-	string decimal = std::to_string(dec);
-	
-	return decimal;
+
+	for (size_t k = 0; k < binaryNumbers.size(); ++k)
+	{
+		//Converts binary to decimal
+		num = std::stoi(binaryNumbers[k], nullptr,2);	
+		decimalNumbers.push_back(num);
+	}
+	return decimalNumbers;
+}
+
+string printString(std::vector<int> decNums) {
+	string decryptedString = "";
+	for (size_t i = 0; i < decNums.size(); ++i) {
+		decryptedString += decNums[i];
+	}
+	return decryptedString;
+}
+
+int keyLogic(string key) {
+	int keyNum = std::stoi(key,nullptr,10);
+	keyNum *= 2;
+
+	return keyNum;
 }
