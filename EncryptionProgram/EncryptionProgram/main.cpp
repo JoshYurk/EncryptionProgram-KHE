@@ -4,6 +4,7 @@
 
 #include "crypt.h"
 #include <fstream>
+#include <Windows.h>
 
 int main() {
 	std::ofstream encryptedFile;
@@ -17,8 +18,9 @@ int main() {
 	string decryptedString;
 	string userKeyInput;
 	string userPathInput;
-
 	
+
+	SetConsoleTitle("Encryption Program");
 	//Menu
 		/*1) Encrypt
 		* 2) Decrypt*/
@@ -29,7 +31,7 @@ int main() {
 	cout << "4) Exit" << endl;
 	cout << "Enter a choice: ";
 	std::cin >> userMenuInput;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.ignore(1, '\n');
 
 	if (userMenuInput == "1") {
 		encryptedFile.open("encryptedString.txt");
