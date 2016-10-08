@@ -5,15 +5,21 @@
 #include "crypt.h"
 
 int main() {
+	//Menu
+		/*1) Encrypt
+		* 2) Decrypt*/
 
 	//Encryption
 		//Enter String to Encrypt
+		//Encrypt String
+		//Show Encrypted String
 	
 	//Key
 		//Enter & Set 12 character string of Alpha-Numeric-Special
+		//Key Conversion Logic
 
-
-	//Decrypt
+	//Decryption
 		//Enter Key
-	
+		//Decrypt String
+		//Show Decrypted String
 }
