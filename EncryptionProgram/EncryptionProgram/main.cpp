@@ -7,13 +7,16 @@
 
 int main() {
 	std::ofstream encryptedFile;
+	std::ifstream encryptedFile1;
 	std::ifstream encryptionFile;
 	std::ofstream encryptionKey;
+	std::ofstream decryptedFile;
 
 	string userMenuInput;
 	string userInput;
 	string decryptedString;
 	string userKeyInput;
+	string userPathInput;
 
 	
 	//Menu
@@ -21,7 +24,7 @@ int main() {
 		* 2) Decrypt*/
 	cout << "Please select something to do (1-4): " << endl;
 	cout << "1) Encrypt a single sentence" << endl;
-	cout << "2) Encrypt a file (WIP)" << endl;
+	cout << "2) Encrypt a file" << endl;
 	cout << "3) Decrypt" << endl;
 	cout << "4) Exit" << endl;
 	cout << "Enter a choice: ";
@@ -47,38 +50,76 @@ int main() {
 		int encryptionKey = keyLogic(userKeyInput);
 		encryptedFile << encrypt(userInput, encryptionKey);
 
-		int i = 0;
-		string load;
-		while (i < 100) {
-			load += ".";
+		cout << endl << "String is now encrypted." << endl;
 
-			cout << load;
-			++i;
-		}
-
-
+		encryptedFile.close();
 	}
 	if (userMenuInput == "2") {
 		cout << "Please enter a file name or path: ";
 		std::getline(std::cin, userInput);
 		cout << "Please create an encryption key (Max 12 characters of anything): ";
 		std::getline(std::cin, userKeyInput);
-	}
-	if (userMenuInput == "3") {
-		cout << "Please enter the encryption key: ";
-		std::getline(std::cin, userKeyInput);
-		cout << "Please enter the string or file path: ";
-		std::getline(std::cin, userInput);
+		while (userKeyInput.length() > 12) {
+			cout << "Error: Key too long, Please re-enter a key: ";
+			std::getline(std::cin, userKeyInput);
+		}
+		cout << "Enter a file path for encrypted file location or leave empty for default: ";
+		std::getline(std::cin, userPathInput);
+
+		encryptionKey << userKeyInput;
+
+		int encryptionKey = keyLogic(userKeyInput);
 
 		encryptionFile.open(userInput);
-		if (encryptionFile.is_open()) {
+		if (userPathInput.length() == 0)
+			encryptedFile.open("encryptedFile.txt");
+		else if (userPathInput.length() > 0)
+			encryptedFile.open(userPathInput);
 
+		if (encryptionFile.is_open()) {
+			while (std::getline(encryptionFile, userInput)) {
+				encryptedFile << encrypt(userInput, encryptionKey) << endl;
+			}
+			cout << endl << "File is now encrypted." << endl;
 		}
 		else {
-			cout << "Your decrypted string is: " << endl << decrypt(userInput, keyLogic(userKeyInput)) << endl;
+			cout << "File was unable to open." << endl;
 		}
+		encryptedFile.close();
+		encryptionFile.close();
+
 	}
-	if (userMenuInput == "4") {
-		exit(0);
+	if (userMenuInput == "3") {
+		cout << "Please enter the file path of the encrypted file: ";
+		std::getline(std::cin, userInput);
+
+		cout << "Please enter the encryption key: ";
+		std::getline(std::cin, userKeyInput);
+		while (userKeyInput.length() > 12) {
+			cout << "Error: Key too long, Please re-enter a key: ";
+			std::getline(std::cin, userKeyInput);
+		}
+
+		int encryptionKey = keyLogic(userKeyInput);
+
+		cout << "Enter a file path for decrypted file location or leave empty for default: ";
+		std::getline(std::cin, userPathInput);
+
+		encryptedFile1.open(userInput);
+
+		if (userPathInput.length() == 0)
+			decryptedFile.open("decryptedFile.txt");
+		else if (userPathInput.length() > 0)
+			decryptedFile.open(userPathInput);
+		
+		if (encryptedFile1.is_open()) {
+			while (std::getline(encryptedFile1, userInput)) {
+				decryptedFile << decrypt(userInput, encryptionKey) << endl;
+			}
+			cout << endl << "File is now decrypted." << endl;
+		}
+
+		encryptedFile1.close();
+		decryptedFile.close();
 	}
 }

@@ -14,7 +14,6 @@ using std::string;
 
 //Functions
 string encrypt(string, int);
-std::vector<string> encryptFile(string);
 string invertBinary(string);
 string decrypt(string, int);
 string convertToBinary(string);
