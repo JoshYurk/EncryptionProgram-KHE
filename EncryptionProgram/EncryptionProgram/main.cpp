@@ -5,26 +5,34 @@
 #include "crypt.h"
 #include <fstream>
 #include <Windows.h>
+#include <stdlib.h>
+#include <chrono>
 
 int main() {
 	bool debugMode = false;
+
+#pragma region Files
 	std::ofstream encryptedFile;
 	std::ifstream encryptedFile1;
 	std::ifstream encryptionFile;
 	std::ofstream encryptionKey;
 	std::ofstream decryptedFile;
+#pragma endregion
 
+#pragma region Variables
 	string userMenuInput;
 	string userInput;
 	string decryptedString;
 	string userKeyInput;
 	string userPathInput;
-
+#pragma endregion
 
 	SetConsoleTitle("Encryption Program");
-	//Menu
-		/*1) Encrypt
-		* 2) Decrypt*/
+
+	/*1) Encrypt
+	* 2) Decrypt*/
+	system("cls");
+	cout << "----------------------------------------------" << endl;
 	cout << "Please select something to do (1-4): " << endl;
 	cout << "1) Encrypt a single sentence" << endl;
 	cout << "2) Encrypt a file" << endl;
@@ -34,6 +42,7 @@ int main() {
 	std::cin >> userMenuInput;
 	std::cin.ignore(1, '\n');
 
+
 	if (userMenuInput == "1") {
 		//File Openings
 		encryptedFile.open("encryptedString.txt");
@@ -42,11 +51,11 @@ int main() {
 		//User Input for single string
 		cout << "Please enter a string to encrypt (Max 256 characters): ";
 		std::getline(std::cin, userInput);
-		
+
 		//User input for encryption key.
 		cout << "Please create an encryption key (Max 12 characters of anything): ";
 		std::getline(std::cin, userKeyInput);
-		
+
 		//Checks for length of the Key
 		while (userKeyInput.length() > 12) {
 			cout << "Error: Key too long, Please re-enter a key: ";
@@ -64,11 +73,13 @@ int main() {
 		encryptedFile << encrypt(userInput, encryptionKey);
 
 		//Confirmation
-		cout << endl << "String is now encrypted." << endl;
+		cout << "Encrypting the string" << endl;
 
-		//File Closings
-		encryptedFile.close();
+		Sleep(1000);
+
+		cout << endl << "The string is now encrypted." << endl;
 	}
+
 	if (userMenuInput == "2") {
 		//User Input
 		cout << "Please enter a file name or path: ";
@@ -83,6 +94,7 @@ int main() {
 		//Output user Input
 		cout << "Enter a file path for encrypted file location or leave empty for default: ";
 		std::getline(std::cin, userPathInput);
+
 
 		if (debugMode == true)
 			encryptionKey << userKeyInput;
@@ -102,16 +114,15 @@ int main() {
 			while (std::getline(encryptionFile, userInput)) {
 				encryptedFile << encrypt(userInput, encryptionKey) << endl;
 			}
-			cout << endl << "File is now encrypted." << endl;
+			cout << "Encrypting the file" << endl;
+
+			Sleep(1000);
+
+			cout << endl << "The file is now encrypted." << endl;
 		}
 		else {
 			cout << "File was unable to open." << endl;
 		}
-
-		//Closing of Files
-		encryptedFile.close();
-		encryptionFile.close();
-
 	}
 	if (userMenuInput == "3") {
 		//Decryption
@@ -146,11 +157,10 @@ int main() {
 			while (std::getline(encryptedFile1, userInput)) {
 				decryptedFile << decrypt(userInput, encryptionKey) << endl;
 			}
-			cout << endl << "File is now decrypted." << endl;
+			cout << "Decrypting the file" << endl;
+			Sleep(1000);
+			cout << endl << "The file is now decrypted." << endl;
 		}
-
-		//File Closings
-		encryptedFile1.close();
-		decryptedFile.close();
 	}
+
 }

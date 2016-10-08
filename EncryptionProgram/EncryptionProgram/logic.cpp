@@ -1,5 +1,6 @@
 //Joshua Yurkovich
 //Math Logic
+//logic.cpp
 
 #include "crypt.h"
 #include <bitset>
