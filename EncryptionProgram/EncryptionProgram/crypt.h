@@ -22,6 +22,7 @@ int keyConversion(string key);
 string userInput;
 string encryptedString;
 string decryptedString;
+string userKeyInput;
 
 #endif 
 
