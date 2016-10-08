@@ -19,6 +19,7 @@ int convertToASCII(int input);
 int keyConversion(string key);
 
 //Variables
+string userMenuInput;
 string userInput;
 string encryptedString;
 string decryptedString;

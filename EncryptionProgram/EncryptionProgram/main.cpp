@@ -10,7 +10,7 @@ int main() {
 		* 2) Decrypt*/
 
 	//Encryption
-		//Enter String to Encrypt
+		//Enter String to Encrypt (Max 256 characters)
 		//Encrypt String
 		//Show Encrypted String
 	
