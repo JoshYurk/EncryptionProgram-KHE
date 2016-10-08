@@ -5,6 +5,7 @@
 #include "crypt.h"
 #include <fstream>
 
+
 int main() {
 	std::ofstream encryptedFile;
 	std::ifstream encryptionFile;
@@ -27,7 +28,7 @@ int main() {
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	if (userMenuInput == "1") {
-		encryptedFile.open("C:/Users/Josh/Desktop/encryptedString.txt");
+		encryptedFile.open("encryptedString.txt");
 		//User Input for single string
 		cout << "Please enter a string to encrypt (Max 256 characters): ";
 		std::getline(std::cin, userInput);
