@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClCompile Include="decrypt.cpp" />
     <ClCompile Include="encrypt.cpp" />
+    <ClCompile Include="logic.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
