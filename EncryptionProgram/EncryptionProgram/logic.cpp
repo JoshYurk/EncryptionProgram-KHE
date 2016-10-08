@@ -18,7 +18,6 @@ string convertToBinary(string input) {
 }
 
 std::vector<int> convertFromBinary(string binaryNum) {
-	int dec = 0, rem, base = 1;
 	int num;
 	std::vector<string> binaryNumbers;
 	std::vector<int> decimalNumbers;
@@ -50,8 +49,24 @@ string printString(std::vector<int> decNums) {
 }
 
 int keyLogic(string key) {
-	int keyNum = std::stoi(key,nullptr,10);
+	int keyNum = 0;
+	for (size_t i = 0; i < key.length(); ++i) {
+		keyNum = keyNum + key[i];
+	}
 	keyNum *= 2;
 
 	return keyNum;
+}
+
+string invertBinary(string binStr) {
+	string invBinStr;
+	for (size_t i = 0; i < binStr.length(); ++i) {
+		if (binStr[i] == '0') {
+			invBinStr.insert(i, "1");
+		}
+		else if (binStr[i] == '1') {
+			invBinStr.insert(i, "0");
+		}
+	}
+	return invBinStr;
 }

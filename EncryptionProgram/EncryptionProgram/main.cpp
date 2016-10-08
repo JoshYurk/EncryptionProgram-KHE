@@ -6,13 +6,13 @@
 #include <fstream>
 
 int main() {
-	std::ofstream binaryFile;
+	std::ofstream encryptedFile;
 	string userMenuInput;
 	string userInput;
 	string decryptedString;
 	string userKeyInput;
 
-	binaryFile.open("C:/Users/Josh/Desktop/binary.txt");
+	
 	//Menu
 		/*1) Encrypt
 		* 2) Decrypt*/
@@ -26,14 +26,16 @@ int main() {
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	if (userMenuInput == "1") {
+		encryptedFile.open("C:/Users/Josh/Desktop/encryptedString.txt");
 		//User Input for single string
 		cout << "Please enter a string to encrypt (Max 256 characters): ";
 		std::getline(std::cin, userInput);
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		//User input for encryption key.
 		cout << "Please create an encryption key (Max 12 characters of anything): " ;
 		std::getline(std::cin, userKeyInput);
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		int encryptionKey = keyLogic(userKeyInput);
+		encryptedFile << encrypt(userInput, encryptionKey);
 
 
 	}

@@ -5,13 +5,13 @@
 
 string encrypt(string unencrypted, int key) {
 	string encryptedString;
+	string binaryString;
 
-	encryptedString = convertToBinary(unencrypted);
-	int encryptedNum = std::stoi(encryptedString, nullptr, 10);
+	binaryString = convertToBinary(unencrypted);
 
-	encryptedNum = encryptedNum + key;
+	
 
-	string encryptedIntStr = std::to_string(encryptedNum);
+	encryptedString = invertBinary(binaryString) + convertToBinary(std::to_string(key));
 
-	return encryptedIntStr;
+	return encryptedString;
 }
