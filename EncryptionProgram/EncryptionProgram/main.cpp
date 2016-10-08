@@ -7,12 +7,13 @@
 
 int main() {
 	std::ofstream encryptedFile;
+	std::ifstream encryptionFile;
 	string userMenuInput;
 	string userInput;
 	string decryptedString;
 	string userKeyInput;
 
-	
+
 	//Menu
 		/*1) Encrypt
 		* 2) Decrypt*/
@@ -31,7 +32,7 @@ int main() {
 		cout << "Please enter a string to encrypt (Max 256 characters): ";
 		std::getline(std::cin, userInput);
 		//User input for encryption key.
-		cout << "Please create an encryption key (Max 12 characters of anything): " ;
+		cout << "Please create an encryption key (Max 12 characters of anything): ";
 		std::getline(std::cin, userKeyInput);
 
 		int encryptionKey = keyLogic(userKeyInput);
@@ -46,10 +47,18 @@ int main() {
 		std::getline(std::cin, userKeyInput);
 	}
 	if (userMenuInput == "3") {
-		//Decryption
-			//Enter Key
-			//Decrypt String
-			//Show Decrypted String
+		cout << "Please enter the encryption key: ";
+		std::getline(std::cin, userKeyInput);
+		cout << "Please enter the string or file path: ";
+		std::getline(std::cin, userInput);
+
+		encryptionFile.open(userInput);
+		if (encryptionFile.is_open()) {
+
+		}
+		else {
+			cout << "Your decrypted string is: " << endl << decrypt(userInput, keyLogic(userKeyInput)) << endl;
+		}
 	}
 	if (userMenuInput == "4") {
 		exit(0);
