@@ -12,18 +12,11 @@ using std::string;
 
 
 //Functions
-string encrypt(string unencrypted);
-string decrypt(string encrypted);
-int convertToBinary(string input);
-int convertToASCII(int input);
-int keyConversion(string key);
-
-//Variables
-string userMenuInput;
-string userInput;
-string encryptedString;
-string decryptedString;
-string userKeyInput;
+string encrypt(string);
+string decrypt(string);
+string convertToBinary(string);
+int convertToASCII(int);
+int keyConversion(string);
 
 #endif 
 

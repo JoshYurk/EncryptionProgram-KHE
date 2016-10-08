@@ -3,14 +3,15 @@
 
 #include "crypt.h"
 #include <bitset>
+
 using std::bitset;
 
-int convertToBinary(string input) {
-	int* binaryArray = new int[256];
-	int i = 0;
-	while (i != input.length()) {
+string binaryString = "";
+string convertToBinary(string input) {
+	//Converts the entire string to binary and stores it.
+	for (int i = 0; i < input.length(); ++i) {
 		bitset<8> bitset1(input[i]);
-		string binaryString = bitset1.to_string();
-		binaryArray[i] = std::stoi(binaryString);
+		binaryString = binaryString + bitset1.to_string();
 	}
+	return binaryString;
 }
