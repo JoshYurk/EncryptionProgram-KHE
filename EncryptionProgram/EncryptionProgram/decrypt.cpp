@@ -5,11 +5,18 @@
 #include "crypt.h"
 
 string decrypt(string encryptedString, int key) {
+	string decryptedString;
 	string keyStr = convertToBinary(std::to_string(key));
 
-	encryptedString = encryptedString.erase(encryptedString.length() - keyStr.length(), keyStr.length());
+	string key3 = encryptedString.substr(encryptedString.length() - keyStr.length(), keyStr.length());
+	string encrypted = encryptedString.erase(encryptedString.length() - keyStr.length(), keyStr.length());
 
-	string decryptedString = printString(convertFromBinary(invertBinary(encryptedString)));
+	if (key3 == keyStr) {
+		decryptedString = printString(convertFromBinary(invertBinary(encrypted)));
+	}
+	else {
+		decryptedString = printString(convertFromBinary(encryptedString));
+	}
 
 	return decryptedString;
 }
