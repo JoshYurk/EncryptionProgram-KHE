@@ -9,6 +9,11 @@
 #include <chrono>
 
 int main() {
+
+	//README
+
+	//The default file path is in the folder that houses the code for this program.
+
 	bool debugMode = false;
 
 #pragma region Files
